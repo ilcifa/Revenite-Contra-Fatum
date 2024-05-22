@@ -378,11 +378,11 @@ public class KeyHandler implements KeyListener{
             gp.stopSE();
             gp.playSE(11);
             if(gp.ui.commandNum == 0){
-                gp.gameState = gp.playState;
                 gp.player.restoreStatus();
                 gp.aSetter.setMonster();
                 gp.saveLoad.load();
                 gp.playMusic(0);
+                gp.gameState = gp.playState;
             }
             else if(gp.ui.commandNum == 1){
                 gp.gameState = gp.quitState;
