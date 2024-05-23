@@ -12,6 +12,7 @@ public class CollisionChecker {
     
     public void checkTile(Entity entity){
         
+        gp.player.collisionTile = false;
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;
         int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
         int entityTopWorldY = entity.worldY + entity.solidArea.y;
@@ -57,6 +58,9 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                 }
                 break;
+        }
+        if(entity.collisionOn == true){
+            gp.player.collisionTile = true;
         }
     }
     
@@ -197,4 +201,3 @@ public class CollisionChecker {
                 
     }
 }
-

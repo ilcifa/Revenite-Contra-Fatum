@@ -31,6 +31,8 @@ public class Player extends Entity{
     public final int maxInventorySize = 20;
     
     public boolean lighting = false;
+    public boolean collisionMob = true;
+    public boolean collisionTile = true;
     
     public Player(GamePanel gp, KeyHandler keyH, MouseHandler mouseH){
         
@@ -187,6 +189,16 @@ public class Player extends Entity{
                     case "right": worldX += speed; break;
                 }
             }
+            if(collisionMob == false && keyH.ePressed == false){
+                if(collisionOn == true && collisionTile == false){
+                    switch(direction){
+                        case "up": worldY -= speed; break;
+                        case "down": worldY += speed; break;
+                        case "left": worldX -= speed; break;
+                        case "right": worldX += speed; break;
+                    }
+                }
+            }
 
             spriteCounter++;
             if(spriteCounter > 10){
@@ -230,7 +242,11 @@ public class Player extends Entity{
         
         if(invincible == true){
             invincibleCounter ++;
+            if(invincibleCounter > 30){
+                collisionMob = false;
+            }
             if(invincibleCounter > 60){
+                collisionMob = true;
                 invincible = false;
                 invincibleCounter = 0;
             }
